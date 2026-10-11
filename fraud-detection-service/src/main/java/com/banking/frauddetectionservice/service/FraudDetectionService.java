@@ -23,6 +23,10 @@ public class FraudDetectionService {
     private static final String VERIFICATION_REQUIRED_TOPIC = "verification.required";
     private static final String FRAUD_CHECK_CLEAN_RESULT_TOPIC = "fraud.check.clean";
 
+    /**
+     *
+     * @param payload
+     */
     public void checkTransaction(Map<String, Object> payload){
         String transactionId = (String)payload.get("transactionId");
         String accountNumber = (String)payload.get("senderAccountNumber");
@@ -62,12 +66,22 @@ public class FraudDetectionService {
         }
     }
 
+    /**
+     * 1. velocity check -> fraud -> mainly -> they run script that do multiple transaction
+     * 5,10,20 transaction in 1min/20 => deteched suspies than otp check for checking user , if it's than normal
+     * 2. user transaction done of 3x,5x,10x time higher than his avg transaction - big transaction.
+     * 3. balance check - user done transaction of his 90% of his balance.
+     * @param accountNumber
+     * @param amount
+     * @param senderBalance
+     * @return
+     */
     private FraudCheckResult performFraudChecks(
             String accountNumber,
             BigDecimal amount,
             BigDecimal senderBalance){
 
-
+        // Pattern 1 : velocity Check
 
         return null;
     }
