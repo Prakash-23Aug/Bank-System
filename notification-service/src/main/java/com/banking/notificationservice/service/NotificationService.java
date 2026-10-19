@@ -38,6 +38,21 @@ public class NotificationService {
 
     }
 
+    @KafkaListener(topics = "transaction.completed")
+    public void consumeTransactionCompleted(
+            @Payload Map<String, Object> payload){
+        try{
+            String senderAccount = (String) payload.get("senderAccountNumber");
+            String receiverAccount = (String) payload.get("receiverAccountNumber");
+            String amount = payload.get("amount").toString();
+
+            // DEBIT ALERT
+
+        }catch (Exception e){
+
+        }
+    }
+
     private void SendAlert(String accountNumber, String subject, String message){
 
     }
