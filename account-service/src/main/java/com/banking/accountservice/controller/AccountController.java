@@ -44,14 +44,14 @@ public class AccountController {
 
     @GetMapping("/{accountNumber}")
     public ResponseEntity<AccountResponse> getAccount(
-            @PathVariable String AccountNumber){
-        return ResponseEntity.ok(accountService.getAccount(AccountNumber));
+            @PathVariable String accountNumber){
+        return ResponseEntity.ok(accountService.getAccount(accountNumber));
     }
 
     @GetMapping("/{accountNumber}/balance")
     public ResponseEntity<BigDecimal> getBalance(
-            @PathVariable String AccountNumber){
-        return ResponseEntity.ok(accountService.getBalance(AccountNumber));
+            @PathVariable("accountNumber") String accountNumber){
+        return ResponseEntity.ok(accountService.getBalance(accountNumber));
     }
 
     @PutMapping("/{accountNumber}/block")
